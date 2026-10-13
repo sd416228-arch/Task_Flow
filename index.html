@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>TaskFlow | Smart Task Manager</title>
+  <link rel="stylesheet" href="Dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<div class="glass-container">
+  <!-- Header -->
+  <div class="app-header">
+    <div class="logo-area">
+      <h1><i class="fas fa-tasks"></i> TaskFlow</h1>
+      <p>smart priorities · live stats · dark mode</p>
+    </div>
+    <button class="theme-toggle" id="themeToggleBtn">
+      <i class="fas fa-moon"></i> <span>Dark Mode</span>
+    </button>
+  </div>
+
+  <!-- Dashboard stats -->
+  <div class="stats-grid">
+    <div class="stat-card"><i class="fas fa-list-check"></i><div class="stat-number" id="totalTasks">0</div><div class="stat-label">Total Tasks</div></div>
+    <div class="stat-card"><i class="fas fa-check-circle"></i><div class="stat-number" id="completedTasks">0</div><div class="stat-label">Completed</div></div>
+    <div class="stat-card"><i class="fas fa-hourglass-half"></i><div class="stat-number" id="pendingTasks">0</div><div class="stat-label">Pending</div></div>
+    <div class="stat-card"><i class="fas fa-flag"></i><div class="stat-number" id="highPriorityCount">0</div><div class="stat-label">High Priority</div></div>
+  </div>
+
+  <div class="workspace">
+    <!-- Add / Edit task panel -->
+    <div class="task-form-panel">
+      <div class="form-card">
+        <h3><i class="fas fa-pen-alt"></i> <span id="formTitle">Create Task</span></h3>
+        <input type="text" id="taskTitle" placeholder="Task title *" maxlength="80">
+        <textarea id="taskDesc" rows="2" placeholder="Description (optional)"></textarea>
+        <div class="priority-btns">
+          <div class="priority-option" data-prio="high">🔴 High</div>
+          <div class="priority-option" data-prio="medium">🟠 Medium</div>
+          <div class="priority-option" data-prio="low">🟢 Low</div>
+        </div>
+        <button id="saveTaskBtn" class="btn-primary"><i class="fas fa-save"></i> Save Task</button>
+        <button id="cancelEditBtn" style="margin-top: 0.7rem; background: transparent; border: 1px solid var(--border-light);" class="btn-primary"><i class="fas fa-times"></i> Cancel Edit</button>
+      </div>
+    </div>
+
+    <!-- Tasks + filters -->
+    <div class="tasks-panel">
+      <div class="filter-bar">
+        <div class="filter-group">
+          <div class="filter-chip" data-filter="all">📋 All</div>
+          <div class="filter-chip" data-filter="pending">⏳ Pending</div>
+          <div class="filter-chip" data-filter="completed">✅ Completed</div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-chip" data-priority-filter="all">🏷️ All</div>
+          <div class="filter-chip" data-priority-filter="high">🔴 High</div>
+          <div class="filter-chip" data-priority-filter="medium">🟠 Med</div>
+          <div class="filter-chip" data-priority-filter="low">🟢 Low</div>
+        </div>
+      </div>
+      <div id="tasksContainer" class="task-list"></div>
+    </div>
+  </div>
+</div>
+<script src="Dashboard.js"></script>
+</body>
+</html>
